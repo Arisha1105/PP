@@ -1,38 +1,199 @@
-.App {
-    text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and styles */
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Custom gradient backgrounds */
+.bg-gradient-luxury {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.bg-gradient-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
-.App-link {
-    color: #61dafb;
+/* Hover effects for property cards */
+.property-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-200;
+}
+
+.btn-success {
+  @apply bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+.btn-danger {
+  @apply bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+/* Custom input styles */
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive text */
+@media (max-width: 640px) {
+  .responsive-text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Status indicators */
+.status-indicator {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-active {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-inactive {
+  @apply bg-red-100 text-red-800;
+}
+
+/* File upload area */
+.upload-area {
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: #6366f1;
+  background-color: #fafafa;
+}
+
+.upload-area.drag-over {
+  border-color: #4f46e5;
+  background-color: #f0f9ff;
+}
+
+/* Property pricing display */
+.price-display {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+/* Contact button styles */
+.contact-btn {
+  @apply flex items-center justify-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 transform;
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+}
+
+.whatsapp-btn {
+  @apply contact-btn bg-green-500 text-white hover:bg-green-600 shadow-lg hover:shadow-xl;
+}
+
+.call-btn {
+  @apply contact-btn bg-blue-500 text-white hover:bg-blue-600 shadow-lg hover:shadow-xl;
+}
+
+/* Notification styles */
+.notification {
+  @apply fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transition-all duration-300;
+}
+
+.notification-success {
+  @apply notification bg-green-500 text-white;
+}
+
+.notification-error {
+  @apply notification bg-red-500 text-white;
+}
+
+.notification-info {
+  @apply notification bg-blue-500 text-white;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    @apply bg-gray-900 text-white;
+  }
+  
+  .dark-mode .bg-white {
+    @apply bg-gray-800;
+  }
+  
+  .dark-mode .text-gray-900 {
+    @apply text-white;
+  }
+  
+  .dark-mode .border-gray-300 {
+    @apply border-gray-600;
+  }
 }
